@@ -1,0 +1,29 @@
+﻿@model List<StudentApp.Models.Entities.Student>
+
+<h1>Students</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Student ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Subscribe</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var student in Model)
+		{
+			<tr>
+				<td>@student.Id</td>
+				<td>@student.Name</td>
+				<td>@student.Email</td>
+				<td>@student.Subscribe</td>
+				<td>
+					<a class="btn btn-primary" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">Edit</a> |
+					<a href="@Url.Action("Details", new { id = student.Id })">Details</a> |
+				</td>
+			</tr>
+		}
+	</tbody>	
+</table>
